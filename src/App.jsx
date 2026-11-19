@@ -5,7 +5,7 @@ import Hero from "./components/Hero";
 import MatchCard from "./components/MatchCard";
 
 function App() {
-  const [selectedMatch, setSelectedMatch] = useState("");
+  const [bookingCount, setBookingCount] = useState(0);
 
   const matches = [
     {
@@ -31,6 +31,10 @@ function App() {
     }
   ];
 
+  function handleBooking() {
+    setBookingCount((count) => count + 1);
+  }
+
   return (
     <>
       <Navbar />
@@ -38,6 +42,8 @@ function App() {
 
       <section id="matches">
         <h2>Match Schedule</h2>
+
+        <h3>Bookings: {bookingCount}</h3>
 
         <div className="match-container">
           {matches.map((item) => (
@@ -47,20 +53,10 @@ function App() {
               date={item.date}
               venue={item.venue}
               price={item.price}
-              onBook={() => setSelectedMatch(item.match)}
+              onBook={handleBooking}
             />
           ))}
         </div>
-
-        {selectedMatch && (
-          <div className="booking-message">
-            <h3>Selected Match: {selectedMatch}</h3>
-            <p>You have selected this match for booking!</p>
-            <button onClick={() => setSelectedMatch("")}>
-              Clear Selection
-            </button>
-          </div>
-        )}
       </section>
     </>
   );
