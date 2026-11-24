@@ -6,7 +6,8 @@ function Navbar() {
 
       <ul>
         <li><a href="#matches">Matches</a></li>
-        <li><a href="#booking">Book Ticket</a></li>
+        <li><a href="#matches">Book Ticket</a></li>
+        <li><a href="#my-bookings">My Bookings</a></li>
       </ul>
     </nav>
   );
